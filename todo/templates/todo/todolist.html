@@ -15,7 +15,10 @@
     <hr>
     {% for todo in todos %}
     <small>{{todo.created}}</small>
-    <h2>{{todo.title}}</h2>
+    <h1>{{todo.id}}</h1>
+    <h2>
+        <a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a>
+    </h2>
     <li>{{todo.text}}</li>
     {% if todo.important %}
     <p style="color: red;">重要</p>
