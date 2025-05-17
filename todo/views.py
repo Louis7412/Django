@@ -4,12 +4,11 @@ from .models import Todo
 
 # Create your views here.
 def todolist(requset):
+    user = requset.user
     todos = Todo.objects.all()
     # get唯一 filter篩選
     # todos = Todo.objects.filter(id=11)
-
-    print(todos)
-    result = {"todos": todos}
+    result = {"todos": todos, "user": user}
     return render(requset, "todo/todolist.html", result)
 
 
