@@ -5,7 +5,9 @@ from .models import Todo
 # Create your views here.
 def todolist(requset):
     user = requset.user
-    todos = Todo.objects.all()
+    todos = None
+    if user.is_authenticated:
+        todos = Todo.objects.filter(user=requset.user)
     # get唯一 filter篩選
     # todos = Todo.objects.filter(id=11)
     result = {"todos": todos, "user": user}

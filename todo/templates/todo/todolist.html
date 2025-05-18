@@ -5,8 +5,18 @@
 {% block content %}
 {{user.username}}
 {{user.email}}
-<h1 style="color: chocolate;">代辦事項</h1>
+<h1 style="color: chocolate;">目前代辦事項</h1>
 <hr>
+
+{% if not todos %}
+<h2 style="color: red;">請先登入或註冊 
+    <br>
+    <a href="{% url 'login' %}">登入</a>&nbsp;
+    <a href="{% url 'register' %}">註冊</a>
+</h2>
+{% endif %}
+
+
 {% for todo in todos %}
 <small>{{todo.created}}</small>
     <h1>{{todo.id}}</h1>
