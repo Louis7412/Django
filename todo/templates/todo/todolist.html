@@ -8,14 +8,25 @@
 <h1 style="color: chocolate;">目前代辦事項</h1>
 <hr>
 
-{% if not todos %}
+{% if not user.is_authenticated %}
 <h2 style="color: red;">請先登入或註冊 
     <br>
     <a href="{% url 'login' %}">登入</a>&nbsp;
     <a href="{% url 'register' %}">註冊</a>
 </h2>
+{% else %}
+<div id="filter-button">
+    <a class="button" href="{% url 'todolist' %}?filter=important">重要</a>
+    <a class="button" href="{% url 'todolist' %}">全部</a>
+    <a class="button" href="{% url 'todolist' %}?filter=completed">已完成</a>
+    <a class="button" href="{% url 'todolist' %}?filter=pending">未完成</a>
+</div>
+        {% if not todos %}
+        <h2 style="color: rgb(241, 23, 70);">目前無代辦事項，請先
+            <a href="{% url 'createtodo' %}">新增</a>
+        </h2>
+        {% endif %}
 {% endif %}
-
 
 {% for todo in todos %}
 <small>{{todo.created}}</small>
