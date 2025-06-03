@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}單一事項{% endblock %}
+{% block title %}建立代辦事項{% endblock %}
 
 {% block style %}
 <style>
@@ -7,7 +7,7 @@
         max-width: 500px;
         margin: 32px auto;
         padding: 24px;
-        background-color: #f4f9ff;
+        background-color: #eaf4ff;
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
@@ -22,6 +22,18 @@
     .form-group label {
         margin-bottom: 6px;
         font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .form-group input[type="checkbox"] {
+        margin-right: 6px;
     }
 
     .form-check {
@@ -44,45 +56,21 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
         width: 100%;
-        margin-top: 8px;
     }
 
     .submit-btn:hover {
         background-color: #2980b9;
     }
-
-    .back-link {
-        display: inline-block;
-        margin-top: 20px;
-        color: #3498db;
-        text-decoration: none;
-    }
-
-    .back-link:hover {
-        text-decoration: underline;
-    }
-
-    .error-msg {
-        color: red;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 40px;
-    }
 </style>
 {% endblock %}
 
 {% block content %}
+<h1>📝 建立代辦事項</h1>
 
-<a class="back-link" href="{% url 'todolist' %}">← 回首頁</a>
-<h1>📝 單一事項編輯</h1>
-
-{% if not todo %}
-<div class="error-msg">⚠️ 編號錯誤，請重新輸入</div>
-{% else %}
 <div class="form-container">
-    <h2>{{ todo.title }}</h2>
     <form method="POST">
         {% csrf_token %}
+
         <div class="form-group">
             <label for="{{ form.title.id_for_label }}">標題：</label>
             {{ form.title }}
@@ -101,14 +89,7 @@
             {{ form.completed }} <label for="{{ form.completed.id_for_label }}">已完成</label>
         </div>
 
-        <button class="submit-btn" type="submit">更新</button>
-
-        {% if message %}
-        <p style="color: green; margin-top: 12px;">{{ message }}</p>
-        {% endif %}
+        <button class="submit-btn" type="submit">建立</button>
     </form>
 </div>
-{% endif %}
-
-
 {% endblock %}
