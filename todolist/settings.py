@@ -94,6 +94,16 @@ DATABASES = {
         "PORT": 3306,
     }
 }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "defaultdb",
+        "USER": "avnadmin",
+        "PASSWORD": "AVNS_ZraNlqWVIbnQMt6TGMD",
+        "HOST": "mysql-99eabbb-todolist-111.j.aivencloud.com",
+        "PORT": 13642,
+    }
+}
 
 
 # Password validation
