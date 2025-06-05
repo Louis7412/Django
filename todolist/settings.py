@@ -19,7 +19,7 @@ pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+load_dotenv(BASE_DIR / ".env")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-ek^-ts*1ckf^#&=2$h3o_2+6nf19tmyl!pwq#bi)vp!x!qbaet
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["django-n7s4.onrender.com"]
 
 
 # Application definition
@@ -97,7 +97,6 @@ DATABASES = {
     }
 }
 
-load_dotenv(BASE_DIR / ".env")
 
 DATABASES = {
     "default": {
